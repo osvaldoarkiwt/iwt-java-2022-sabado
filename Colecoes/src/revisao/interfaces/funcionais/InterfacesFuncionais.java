@@ -1,5 +1,7 @@
 package revisao.interfaces.funcionais;
 
+import java.util.function.Function;
+
 public class InterfacesFuncionais {
 
 	public static void main(String[] args) {
@@ -19,6 +21,10 @@ public class InterfacesFuncionais {
 		System.out.println(calculaArea(quadFuncional,10));
 		System.out.println(calculaArea(triFuncional,10));
 		System.out.println(calculaArea(x-> x*5,10));
+		
+		Function<Double, Double> calculaArea = d -> d *4;
+		
+		System.out.println(calculaArea.apply(10.0));
 	}
 	
 	public static double calculaArea(FiguraGeometrica figura, double lado) {
