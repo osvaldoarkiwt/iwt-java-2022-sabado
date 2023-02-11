@@ -63,25 +63,43 @@ public class Funcionario extends Pessoa implements Tributos{
 
 	@Override
 	public Double calculaInss(Double salario) {
-		// TODO Auto-generated method stub
-		return null;
+		Double aliquota = 0.0;
+		if(salario <= 1302.00) {
+			aliquota = 0.075;
+		} else if(salario>=1302.01 || salario<=2571.29) {
+			aliquota = 0.09;
+		} else if(salario>=2571.30 || salario<=3856.94) {
+			aliquota = 0.12;
+		} else if(salario>=3856.95 || salario<=7507.49) {
+			aliquota = 0.14;
+		}
+		return salario * aliquota;
 	}
 
 	@Override
 	public Double calculaIR(Double salario) {
-		// TODO Auto-generated method stub
-		return null;
+		Double aliquota = 0.0;
+		if(salario <= 1903.98) {
+			aliquota = 0.0;
+		} else if(salario>=1903.99 || salario<=2826.65) {
+			aliquota = 0.075;
+		} else if(salario>=2826.66 || salario<=3751.05) {
+			aliquota = 0.15;
+		} else if(salario>=3751.06 || salario<=4664.68) {
+			aliquota = 0.225;
+		} else {
+			aliquota = 0.275;
+		}
+		return salario * aliquota;
 	}
 
 	@Override
 	public Double calculavaleRefeicao(Double salario) {
-		// TODO Auto-generated method stub
-		return null;
+		return salario * 0.2;
 	}
 
 	@Override
 	public Double calculavaleTransporte(Double salario) {
-		// TODO Auto-generated method stub
-		return null;
+		return salario * 0.06;
 	}
 }
