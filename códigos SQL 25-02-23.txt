@@ -58,3 +58,41 @@ select nome,endereco from pessoa where nome ilike 'fab%' or nome like '%ro%';
 
 
 select e.nome as empresa_nome , e.endereco, p.nome as pessoa_nome from empresa e inner join pessoa p on e.pessoa_id = p.id;
+
+-------------------------------------------------------------------------------------------------------------------------------
+04/03/2023
+-------------------------------------------------------------------------------------------------------------------------------
+
+create table cliente (id serial primary key, nome varchar(100),
+cpf varchar(11),conta_id bigint);
+alter table cliente add column conta_id bigint;
+
+alter table cliente drop column conta_id;
+
+alter table conta add column cliente_id bigint;
+
+alter table conta alter column cliente_id set not null; 
+
+alter table conta add constraint fk_cliente_id foreign key (cliente_id) references cliente(id);
+
+create table conta (id serial primary key, tipo varchar(20),saldo decimal);
+
+alter table cliente add constraint fk_conta_id foreign key 
+(conta_id) references conta(id);
+
+insert into cliente (nome,cpf,conta_id) values('geraldo','77130414359',1);
+
+insert into cliente (nome,cpf) values('geraldo filho','42390015360');
+
+insert into cliente (nome,cpf) values('maria','10060159731');
+
+insert into conta(tipo,saldo,cliente_id) values('poupança',1000.0,1);
+
+insert into conta(tipo,saldo,cliente_id) values('corrente',3000.0,3);
+
+insert into conta(tipo,saldo,cliente_id) values('investimento',500.0,2);
+
+select c.nome, ct.tipo , ct.saldo from cliente c
+inner join conta ct on c.id = ct.cliente_id  ; 
+
+update conta set cliente_id = 2 where id = 2;
