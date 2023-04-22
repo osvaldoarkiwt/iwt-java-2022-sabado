@@ -1,4 +1,4 @@
-package br.com.projetojsp;
+package br.com.projetojsp.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -12,15 +12,18 @@ import javax.servlet.http.HttpServletResponse;
 public class ProjetoServlet extends HttpServlet{
 
 	@Override
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws IOException {
 		
+		Long id = Long.parseLong(request.getParameter("id"));
 		String nome = request.getParameter("nome");
-		
+		Integer quantidade  = Integer.parseInt(request.getParameter("quantidade"));
+		Double preco = Double.parseDouble(request.getParameter("preco"));
 		PrintWriter out = response.getWriter();
 		
 		out.write("<html>");
 		out.write("<body>");
-		out.write("<h3>Implementando um servlet "+nome+"</h3>");
+		out.write("<h3>Implementando um servlet "+id+" "+nome+" "+quantidade+" "+preco+"</h3>");
 		out.write("</body>");
 		out.write("</html>");
 	}

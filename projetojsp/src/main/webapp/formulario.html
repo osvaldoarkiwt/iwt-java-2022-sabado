@@ -6,8 +6,28 @@
 <title>Exemplo Servlets</title>
 </head>
 <body>
-	<form action="/projetojsp/recurso" method="get">
-		<input type="text" name="nome"/>
+	<form action="/projetojsp/recurso" method="post">
+	
+		<label>
+			id:
+			<input type="text" name="id"/>
+		</label>
+		<br/>
+		<label>
+			nome:
+			<input type="text" name="nome"/>
+		</label>
+		<br/>
+		<label>
+			quantidade:
+			<input type="number" name="quantidade"/>
+		</label>
+		<br/>
+		<label>
+			preço:
+			<input type="number" name="preco"/>
+		</label>
+		<br/>
 		<input type="submit" value="enviar">
 	</form>
 </body>
