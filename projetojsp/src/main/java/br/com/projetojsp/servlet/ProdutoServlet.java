@@ -1,6 +1,7 @@
 package br.com.projetojsp.servlet;
 
 import java.io.IOException;
+import java.util.Optional;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,22 +10,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.com.projetojsp.dao.ProdutoDao;
 import br.com.projetojsp.model.Produto;
 
-@WebServlet("/produto-dispatcher")
+@WebServlet("/produto-serv")
 public class ProdutoServlet extends HttpServlet{
 
 	
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		Produto produto = new Produto();
+		Long id = Long.parseLong(request.getParameter("id"));
 		
-		produto.setId(5L);
-		produto.setNome("kiwi");
-		produto.setPreco(15.00);
-		produto.setQuantidade(16);
+		ProdutoDao dao = new ProdutoDao();
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/produto.jsp");
+		Produto produto = dao.buscarProdutosPorId(id);
+		
+		String resultado = produto == null ? "/notfound.jsp" : "/editar.jsp";
+		
+		RequestDispatcher rd = request.getRequestDispatcher(resultado);
 		
 		request.setAttribute("produto", produto);
 		

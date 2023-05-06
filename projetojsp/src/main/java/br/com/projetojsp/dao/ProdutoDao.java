@@ -57,7 +57,7 @@ public class ProdutoDao {
 	
 	public void deletarProduto(Long id) {
 		
-		String sql = "delete produto where id=?";
+		String sql = "delete from produto where id=?";
 
 		try {
 				

@@ -13,6 +13,12 @@ public class Produto {
 	private Integer quantidade;
 	
 	public Produto() {}
+	
+	public Produto(String nome, Double preco, Integer quantidade) {
+		this.nome = nome;
+		this.preco = preco;
+		this.quantidade = quantidade;
+	}
 
 	public Long getId() {
 		return id;
