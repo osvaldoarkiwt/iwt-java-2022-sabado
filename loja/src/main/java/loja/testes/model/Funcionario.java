@@ -1,4 +1,4 @@
-package loja.testes;
+package loja.testes.model;
 
 import java.util.Objects;
 
@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="funcionario")
+@Table(name="funcionarios")
 public class Funcionario {
 
 	@Id
